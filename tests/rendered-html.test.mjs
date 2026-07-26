@@ -38,6 +38,8 @@ test("server-renders the Caveman Copy Hub", async () => {
   assert.match(html, /Caveman Copy turns features into/);
   assert.match(html, /reasons to buy\./);
   assert.match(html, /Showcase Website/);
+  assert.match(html, /COPY-PASTE STARTER/);
+  assert.match(html, /Not sure which skill to use\? Start here\./);
   assert.match(html, /06 SKILLS/);
   assert.match(html, /caveman-copy-hub-social\.png/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);

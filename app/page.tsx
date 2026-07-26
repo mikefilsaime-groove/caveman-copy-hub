@@ -12,6 +12,7 @@ type SkillPanel = {
   proofTitle: string;
   proofBody: string;
   invokes: string;
+  prompt: string;
 };
 
 const skills: SkillPanel[] = [
@@ -27,6 +28,17 @@ const skills: SkillPanel[] = [
     proofBody:
       "The core skill protects the brief, verifies the product truth, and makes every capability answer the buyer’s real question: Why should I care?",
     invokes: "Always invokes Wordsmithing. Invokes Product Visual Proof when visuals are in scope.",
+    prompt: `Use the Caveman Copy skill to improve this [hero / feature block / paragraph / CTA].
+
+Product: [PRODUCT NAME]
+Audience: [WHO THIS IS FOR]
+What it does: [VERIFIED PRODUCT OR FEATURE FACTS]
+What the customer should gain: [DESIRED OUTCOME]
+Current copy: [PASTE THE COPY]
+Required CTA: [NEXT ACTION]
+Preserve: [CLAIMS, TERMS, OR COMPONENTS THAT MUST NOT CHANGE]
+
+Keep the work strictly to this one copy unit. Make it immediately clear what this is, what it does, and why the customer should care. Carry every feature through its advantage, benefit, and promised land. Verify claims, then apply the Wordsmithing skill before giving me the final copy.`,
   },
   {
     id: "showcase",
@@ -40,6 +52,17 @@ const skills: SkillPanel[] = [
     proofBody:
       "No filler cards. No repeated dashboards. Every card must make one commercially important idea easier to understand, believe, and want.",
     invokes: "Invokes Caveman Copy, Wordsmithing, and Product Visual Proof for every card.",
+    prompt: `Use the Caveman Product Showcase skill to create or improve exactly five showcase cards for [PRODUCT NAME].
+
+Product repository: [REPOSITORY PATH]
+Product documentation: [USER GUIDE OR DOCS PATH]
+Audience: [WHO THIS IS FOR]
+Primary product outcome: [MAIN CUSTOMER RESULT]
+Known strongest features: [LIST VERIFIED FEATURES OR ASK THE AGENT TO IDENTIFY THEM]
+Destination: [PAGE, COMPONENT, OR ROUTE]
+Preserve: [DESIGN, COPY, COMPONENT, OR NAVIGATION RULES]
+
+Card one must show the product name prominently and explain in seconds what the product is, what it does, and why it matters. Cards two through five must sell the four strongest verified features. Use Caveman Copy and Wordsmithing on every card. Use Product Visual Proof to investigate the real product and create message-bearing visual evidence for every card. Do not invent features or add filler cards.`,
   },
   {
     id: "website-copy",
@@ -53,6 +76,18 @@ const skills: SkillPanel[] = [
     proofBody:
       "The homepage introduces and routes. Product pages sell. Feature pages explain mechanisms. Proof, pricing, comparison, and legal pages keep their own jobs.",
     invokes: "Invokes Caveman Copy section by section and Product Visual Proof whenever visuals are included.",
+    prompt: `Use the Caveman Website Copy skill to audit and improve [WEBSITE OR LANDING PAGE].
+
+Website URL: [LIVE URL]
+Repository or worktree: [LOCAL PATH]
+Product: [PRODUCT NAME]
+Audience: [PRIMARY BUYER]
+Primary conversion action: [CTA]
+Verified docs and user guide: [PATHS OR LINKS]
+Pages in scope: [ROUTES OR “INVENTORY ALL PUBLIC MARKETING ROUTES”]
+Preserve: [URLS, NAVIGATION, FOOTER, CLAIMS, COMPONENTS, OR PROTECTED PAGES]
+
+First build a page-by-page message architecture so every page has a distinct job, promise, proof burden, and next action. Then use Caveman Copy section by section and Wordsmith every final draft. When visuals are in scope, invoke Product Visual Proof and audit each prominent visual as pass, revise, or replace. Do not change authenticated application functionality or invent claims.`,
   },
   {
     id: "showcase-website",
@@ -66,6 +101,18 @@ const skills: SkillPanel[] = [
     proofBody:
       "Its DESIGN.md controls the pinned navigation, isolated card stacks, directional transitions, mobile reading behavior, reduced motion, and the persistent route into the deeper website.",
     invokes: "Invokes Caveman Product Showcase for every product, which invokes Caveman Copy, Wordsmithing, and Product Visual Proof.",
+    prompt: `Use the Caveman Showcase Website skill and its DESIGN.md to create a guided product-family showcase.
+
+Company or suite: [NAME]
+Repository or worktree: [LOCAL PATH]
+Existing website: [LIVE URL]
+Product categories: [CATEGORY LIST]
+Products in each category: [PRODUCT LIST]
+Opening suite promise: [WHAT THE WHOLE FAMILY HELPS CUSTOMERS DO]
+Deeper website destination: [ROUTE OR LABEL]
+Preserve: [TOP BAR, NAVIGATION, FOOTER, URLS, BRAND, OR EXISTING COMPONENTS]
+
+Create one opening suite card followed by an isolated five-card Product Showcase for every product. Use the required category and product navigation, complete-card resets, directional transitions, mobile reading behavior, reduced-motion behavior, and persistent route into the deeper website. Use verified product facts, Caveman Product Showcase, Wordsmithing, and Product Visual Proof. Never render all product stacks as one cascading page.`,
   },
   {
     id: "visual-proof",
@@ -79,6 +126,18 @@ const skills: SkillPanel[] = [
     proofBody:
       "Show what the feature produces, changes, or makes possible. Generic dashboards, tiny labeled boxes, and palette-filling panels never qualify as proof.",
     invokes: "Can run independently or as the conditional visual layer beneath every Caveman skill.",
+    prompt: `Use the Product Visual Proof skill to audit and improve the prominent visual supporting this claim.
+
+Product: [PRODUCT NAME]
+Exact claim to prove: [NEARBY HEADLINE AND COPY]
+Repository: [CURRENT APPLICATION PATH]
+User guide or docs: [PATH OR LINK]
+Feature route or state: [WHERE THE FEATURE LIVES]
+Destination size: [WIDTH, HEIGHT, OR ASPECT RATIO]
+Responsive constraints: [DESKTOP AND MOBILE REQUIREMENTS]
+Preserve: [DESIGN SYSTEM, COMPONENTS, OR PRODUCT-FIDELITY RULES]
+
+Confirm the current product is not a legacy app. Read the relevant docs, run the product when practical, navigate headlessly to the exact feature, remove onboarding or developer overlays, and evaluate the visual at its real destination size. Mark the current visual pass, revise, or replace. Prefer a recognizable product result, then real UI, then a faithful HTML/CSS reconstruction, then a verified explanatory scene. Do not invent product behavior. Apply the showstopper test before approving it.`,
   },
   {
     id: "wordsmithing",
@@ -92,8 +151,29 @@ const skills: SkillPanel[] = [
     proofBody:
       "One idea per sentence. Natural breath points. No stacked clauses burying the payoff. If a strong line tangles the mouth, it is not finished.",
     invokes: "Invoked by Caveman Copy for every final draft.",
+    prompt: `Use the Wordsmithing skill to strengthen the copy below.
+
+Audience: [WHO WILL READ IT]
+Desired tone: [DIRECT, CONFIDENT, WARM, EDGY, ETC.]
+Meaning and verified claims that must remain unchanged: [LIST THEM]
+Copy to improve:
+
+[PASTE COPY]
+
+Keep the same meaning. Cut filler, sharpen vague language, make the outcome concrete, improve the emotional consequence, and make every line easy to read aloud. Do not add unsupported claims or expand the requested scope. Give me the recommended rewrite first.`,
   },
 ];
+
+const overviewPrompt = `Help me choose and use the smallest Caveman skill that matches this job.
+
+What I am working on: [ONE COPY BLOCK / FIVE-CARD PRODUCT SHOWCASE / LANDING PAGE / MULTI-PAGE WEBSITE / SHOWCASE WEBSITE / PRODUCT VISUAL / EXISTING COPY]
+Product or company: [NAME]
+Audience: [WHO THIS IS FOR]
+Repository, docs, or current copy: [PATHS, LINKS, OR PASTED MATERIAL]
+Desired outcome: [WHAT SHOULD IMPROVE]
+Preserve: [CLAIMS, COMPONENTS, URLS, OR RULES THAT MUST NOT CHANGE]
+
+Choose the correct Caveman skill for the requested scope, explain the choice in one sentence, load its required sub-skills, and complete the work without expanding the assignment.`;
 
 const installCommand =
   "unzip caveman-copy-skill-system.zip -d ~/.claude/skills/";
@@ -101,6 +181,7 @@ const installCommand =
 export default function Home() {
   const [active, setActive] = useState("overview");
   const [copied, setCopied] = useState(false);
+  const [copiedPrompt, setCopiedPrompt] = useState<string | null>(null);
 
   const selectSkill = (id: string) => {
     setActive(id);
@@ -116,6 +197,12 @@ export default function Home() {
     await navigator.clipboard.writeText(installCommand);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1800);
+  };
+
+  const copyStarterPrompt = async (id: string, prompt: string) => {
+    await navigator.clipboard.writeText(prompt);
+    setCopiedPrompt(id);
+    window.setTimeout(() => setCopiedPrompt(null), 1800);
   };
 
   return (
@@ -320,34 +407,68 @@ export default function Home() {
                     <i aria-hidden="true">→</i>
                   </button>
                 </div>
+
+                <div className="prompt-card">
+                  <div className="prompt-card-header">
+                    <div>
+                      <p className="eyebrow">COPY-PASTE STARTER</p>
+                      <h4>Not sure which skill to use? Start here.</h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => copyStarterPrompt("overview", overviewPrompt)}
+                    >
+                      {copiedPrompt === "overview" ? "Copied" : "Copy prompt"}
+                    </button>
+                  </div>
+                  <pre><code>{overviewPrompt}</code></pre>
+                </div>
               </div>
             ) : (
               skills
                 .filter((skill) => skill.id === active)
                 .map((skill) => (
                   <div
-                    className="project-layout"
+                    className="skill-panel"
                     id={`panel-${skill.id}`}
                     role="tabpanel"
                     aria-labelledby={`tab-${skill.id}`}
                     key={skill.id}
                   >
-                    <div>
-                      <p className="eyebrow">{skill.eyebrow}</p>
-                      <h3>{skill.title}</h3>
-                      <p className="project-summary">{skill.summary}</p>
-                      <a className="button dark" href="#install">
-                        Install this system <span aria-hidden="true">↓</span>
-                      </a>
+                    <div className="project-layout">
+                      <div>
+                        <p className="eyebrow">{skill.eyebrow}</p>
+                        <h3>{skill.title}</h3>
+                        <p className="project-summary">{skill.summary}</p>
+                        <a className="button dark" href="#install">
+                          Install this system <span aria-hidden="true">↓</span>
+                        </a>
+                      </div>
+                      <aside>
+                        <span>{skill.proofLabel}</span>
+                        <b>{skill.proofTitle}</b>
+                        <p>{skill.proofBody}</p>
+                        <hr />
+                        <span>HOW IT CONNECTS</span>
+                        <p>{skill.invokes}</p>
+                      </aside>
                     </div>
-                    <aside>
-                      <span>{skill.proofLabel}</span>
-                      <b>{skill.proofTitle}</b>
-                      <p>{skill.proofBody}</p>
-                      <hr />
-                      <span>HOW IT CONNECTS</span>
-                      <p>{skill.invokes}</p>
-                    </aside>
+
+                    <div className="prompt-card">
+                      <div className="prompt-card-header">
+                        <div>
+                          <p className="eyebrow">COPY-PASTE STARTER</p>
+                          <h4>Start {skill.tab} with this prompt.</h4>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => copyStarterPrompt(skill.id, skill.prompt)}
+                        >
+                          {copiedPrompt === skill.id ? "Copied" : "Copy prompt"}
+                        </button>
+                      </div>
+                      <pre><code>{skill.prompt}</code></pre>
+                    </div>
                   </div>
                 ))
             )}

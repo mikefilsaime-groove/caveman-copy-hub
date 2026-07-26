@@ -599,6 +599,71 @@ h3 {
   border-top: 1px solid #cbd5e4;
 }
 
+.skill-panel {
+  display: grid;
+  gap: 28px;
+}
+
+.prompt-card {
+  overflow: hidden;
+  border: 1px solid #cbd5e4;
+  border-radius: 20px;
+  background: #07162f;
+  box-shadow: 0 18px 35px rgb(11 31 69 / 10%);
+  color: var(--white);
+}
+
+.prompt-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 22px 24px;
+  border-bottom: 1px solid rgb(255 255 255 / 14%);
+}
+
+.prompt-card-header .eyebrow {
+  margin-bottom: 7px;
+  color: #ff6079;
+}
+
+.prompt-card h4 {
+  margin: 0;
+  font-family: var(--font-geist), sans-serif;
+  font-size: 21px;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+}
+
+.prompt-card button {
+  flex: 0 0 auto;
+  min-width: 105px;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--red);
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.prompt-card pre {
+  max-height: 390px;
+  margin: 0;
+  overflow: auto;
+  padding: 24px;
+  background: #0b1f45;
+  white-space: pre-wrap;
+}
+
+.prompt-card code {
+  color: #e8eef8;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  line-height: 1.75;
+}
+
 .install-section {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -910,6 +975,22 @@ a:focus-visible {
 
   .project-layout aside {
     padding: 25px;
+  }
+
+  .prompt-card-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px;
+  }
+
+  .prompt-card button {
+    width: 100%;
+  }
+
+  .prompt-card pre {
+    max-height: 520px;
+    padding: 20px;
   }
 
   .install-section {
