@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caveman Copy"
+  short_description: "Write brutally clear heroes and feature copy"
+  default_prompt: "Use $caveman-copy to rewrite this hero or feature block without expanding the scope."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caveman Product Showcase"
+  short_description: "Build a five-card product pitch and feature tour"
+  default_prompt: "Use $caveman-product-showcase to turn this product into a five-card showcase."

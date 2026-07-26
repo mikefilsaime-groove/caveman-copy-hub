@@ -136,8 +136,13 @@ export default function Home() {
             <small>Mike Filsaime</small>
           </span>
         </a>
-        <a className="github-pill" href="#install">
-          Download the bundle <span aria-hidden="true">↓</span>
+        <a
+          className="github-pill"
+          href="https://github.com/mikefilsaime-groove/caveman-copy-hub"
+          target="_blank"
+          rel="noreferrer"
+        >
+          View on GitHub <span aria-hidden="true">↗</span>
         </a>
       </header>
 

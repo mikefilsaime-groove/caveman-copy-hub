@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caveman Showcase Website"
+  short_description: "Build a message-first five-card product showcase"
+  default_prompt: "Use $caveman-showcase-website to build a five-card product showcase that can lead or intercept a product website."

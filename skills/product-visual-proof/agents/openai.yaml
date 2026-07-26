@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Visual Proof"
+  short_description: "Investigate and build message-first visuals"
+  default_prompt: "Use $product-visual-proof to investigate this product feature and create the strongest supporting visual proof."

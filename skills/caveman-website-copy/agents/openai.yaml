@@ -1,0 +1,4 @@
+interface:
+  display_name: "Caveman Website Copy"
+  short_description: "Plan and write clear landing pages and websites"
+  default_prompt: "Use $caveman-website-copy to plan and write the copy for this website."
