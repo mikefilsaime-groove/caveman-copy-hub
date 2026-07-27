@@ -113,6 +113,75 @@ When a showcase mode deliberately differs from the traditional site, use a contr
 
 Motion explains navigation. It must never compete with comprehension.
 
+### Canonical Scale.gg interaction reference
+
+When the user asks for behavior “like the Scale.gg frontend,” do not approximate the interaction from this document alone. Inspect the current homepage implementation before writing showcase motion:
+
+- `css/working.css`: `.showcase-nav-tab`, `.showcase-product-tab`, `.showcase-card`, `.showcase-product-section.is-stack-active`, `.showcase-handoff`, and responsive/reduced-motion rules.
+- `js/working.js`: `pulseActiveTabs`, `mountChapter`, `transitionOverlay`, `transitionToIndex`, `bindReverseChapterGesture`, `updateDepth`, and `maybeAdvanceChapter`.
+
+Port the interaction model into the destination component without importing unrelated homepage layout, header, or full-page scroll assumptions.
+
+#### Compact navigation reference
+
+The Scale.gg showcase navigation is not a row of large outline pills.
+
+- Category controls are quiet text tabs with no enclosing pill. Use an approximately `13px` label, a `43–46px` row, and a `3px` animated underline for the selected category.
+- Product/topic controls are compact tabs approximately `36px` high with `12px` labels, `5px 14px` padding, and roughly a `10px` radius.
+- The selected product/topic tab uses the coordinated card accent as a compact fill, a restrained shadow, and a short underline. Inactive tabs remain transparent.
+- On selection or chapter arrival, pulse both selected tabs with the Scale.gg arrival motion: `420ms`, rising about `4px`, settling about `1px` below origin, then returning to rest.
+- Horizontally overflowing rows hide their scrollbar, reveal clipped content with edge fades, and scroll the selected control into view.
+- Navigation must consume only the space needed for orientation. The card—not the tab chrome—dominates the viewport.
+
+#### One mounted chapter at a time
+
+A chapter is one product or subtopic and exactly five cards. Mount only the active chapter in the animated stack.
+
+- Do not render every chapter as one long sequence of sticky sections and call that a stack.
+- Keep the content model for every chapter available, but place only the active chapter’s five cards in the live animated stack.
+- Give each card a stable zero-based `--stack-index` and a higher `z-index` than the previous card.
+- Direct category or product navigation builds the destination chapter, transitions to it, mounts it, resets it to Card 1, updates both navigation levels, and announces the new state.
+
+#### Exact desktop stack behavior
+
+Make the card element itself sticky. Do not make five unrelated card interiors sticky inside five viewport-height wrappers.
+
+Reference structure:
+
+```css
+.chapter-card {
+  position: sticky;
+  top: calc(var(--showcase-sticky-top) + (var(--stack-index) * 7px));
+  z-index: calc(10 + var(--stack-index));
+}
+```
+
+As the next card approaches its `7px`-offset sticky position:
+
+- it moves in front of the previous card;
+- the previous card remains visible behind it;
+- the previous card scales from `1` toward approximately `0.98`;
+- the previous card darkens from `brightness(1)` toward approximately `brightness(0.94)`;
+- transforms update in short linear frames (the reference uses about `90ms`) so the depth follows scrolling without lag.
+
+At least two card edges must be visibly layered during the handoff. If the old card simply scrolls away before the next card appears, the showcase is not using the Scale.gg stack.
+
+#### Exact chapter handoff behavior
+
+After Card 5, place a next-chapter sentinel after the active stack. On desktop, when that sentinel reaches roughly `62%` of the viewport while the reader is moving down:
+
+1. clone Card 1 of the next chapter into a fixed overlay matching the visible outgoing card’s exact rectangle;
+2. keep the outgoing card visible underneath;
+3. for forward navigation, start the incoming clone at `translateX(105%)`;
+4. animate it to `translateX(0)` over approximately `620ms` with `cubic-bezier(0.72, 0, 0.18, 1)`;
+5. after the animation, mount the destination chapter, align its complete Card 1 beneath the sticky navigation, remove the overlay, update selected tabs, and run the arrival pulse.
+
+Backward navigation mirrors the same overlay from `translateX(-105%)`.
+
+Scrolling upward from the aligned first card of any chapter except the first must return to the previous chapter. Accumulate a deliberate upward-wheel gesture rather than firing on noise; the Scale.gg reference uses about `48px` of intent inside a `220ms` window. The destination is the previous chapter’s complete first card, with the horizontal direction reversed.
+
+Direct tab navigation uses the same horizontal handoff. Direction is determined by the destination’s position in the chapter sequence. It must never swap content instantly on desktop while the homepage reference animates it.
+
 ### Within one product
 
 - Pin the active card region while the reader advances through the five-card stack.
@@ -125,7 +194,7 @@ Motion explains navigation. It must never compete with comprehension.
 
 - After card five, transition horizontally to card one of the next product.
 - After the final product, continue to card one of the next category.
-- Scrolling upward from card one returns horizontally to card five of the previous product or category.
+- Scrolling upward from card one returns horizontally to the complete first card of the previous product or category, matching the current Scale.gg homepage chapter reset.
 - Use directionally consistent motion: forward moves one direction, backward reverses it.
 - A brief tab pulse or bounce may confirm the change. Avoid expanding side bars or effects that resemble broken CSS.
 
@@ -142,6 +211,8 @@ Clicking a category or product tab must:
 ### Reduced motion
 
 Honor `prefers-reduced-motion`. Replace scroll-linked transforms with immediate state changes or short fades. All content and navigation must remain usable without animation.
+
+On compact/coarse-pointer layouts and in reduced-motion mode, disable the sticky layering, depth transforms, automatic scroll-triggered chapter handoff, and fixed horizontal overlay. Render the active chapter’s five cards in normal document flow and keep an explicit next-chapter control. Tab navigation must still reset to a complete Card 1.
 
 ## Showcase and site modes
 
@@ -211,6 +282,8 @@ Track active category, product, and card explicitly. Do not infer all three from
 
 Prefer one mounted product stack at a time when that prevents cascade flashes and improves performance. Preload only the next/previous card assets required for a clean handoff.
 
+For the Scale.gg interaction model, “prefer one mounted product stack” is mandatory: keep one active five-card chapter in the animated DOM, plus only the temporary fixed clone used during a horizontal handoff.
+
 The animation library is an implementation choice, not part of the design identity. Use CSS, Intersection Observer, GSAP, or the host framework’s motion system only when it can preserve the behavior above.
 
 ## Failure conditions
@@ -224,6 +297,10 @@ Stop and revise when any of these appear:
 - essential copy rendered as fine print;
 - every product opening on the same card color;
 - stacked cards flashing or cascading in front during a tab change;
+- large bordered category pills replacing the compact Scale.gg tab treatment;
+- all chapters rendered as one long page instead of one mounted five-card stack;
+- sticky card interiors that scroll away independently instead of cards visibly layering in one viewport;
+- a next chapter appearing without the right-to-left handoff, or a previous chapter appearing without the mirrored left-to-right handoff;
 - category/product changes landing halfway through a card;
 - mobile scroll advancing before the card can be read;
 - showcase controls missing from deeper pages when a persistent mode switch was promised;
@@ -238,4 +315,3 @@ Ask two questions for every card:
 2. Does the proof make the claim easier to believe and want?
 
 If either answer is no, the card is decoration—not a showcase.
-
