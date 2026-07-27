@@ -1,6 +1,6 @@
 ---
 name: caveman-copy
-description: Write or rewrite brutally clear product and marketing copy at the requested scope. Use for one hero, one feature block, one section, one product elevator pitch, a CTA, supporting copy, or a small group of explicitly requested sections. Explains what something is, why it is different, what the customer gains, and the promised land without creating extra cards, sections, or pages. Requires Wordsmithing for final copy and conditionally invokes Product Visual Proof when visual work is included.
+description: Write or rewrite brutally clear product and marketing copy at the requested scope. Use for one hero, one feature block, one section, one product elevator pitch, a CTA, supporting copy, or a small group of explicitly requested sections. Explains what something is, why it is different, what the customer gains, and the promised land without creating extra cards, sections, or pages. For any checkout page, checkout widget, order form, payment, registration, checkout success, or post-purchase thank-you copy, always use checkout-page-skill as the governing skill and apply Caveman Copy only within that workflow. Requires Wordsmithing for final copy and conditionally invokes Product Visual Proof when visual work is included.
 ---
 
 # Caveman Copy
@@ -19,6 +19,27 @@ Match the requested unit exactly.
 - If asked for several named sections, write only those sections.
 
 Never invent a five-card sequence, landing page, site architecture, extra feature, or additional section unless the user requests it. Use `caveman-product-showcase` for the strict five-card format. Use `caveman-website-copy` for landing pages and websites.
+
+## Route checkout copy through the checkout skill
+
+Never handle checkout copy as a standalone Caveman Copy workflow.
+
+When the requested copy appears on a checkout page, checkout widget, order form, payment flow, event registration flow, checkout success state, or post-purchase thank-you page:
+
+1. Use `/Users/mikefilsaime/.claude/skills/checkout-page-skill/SKILL.md` as the governing skill.
+2. Read it completely unless it is already active and loaded for the current task.
+3. Follow its checkout-specific source-truth, conversion, consent, plumbing, mobile, accessibility, and QA requirements.
+4. Apply Caveman Copy only as its scoped copy method.
+5. Do not recursively reload either skill when moving between the governing checkout workflow and this copy method.
+
+The ownership chain is:
+
+```text
+Checkout Page Skill (governing workflow)
+   └──→ Caveman Copy (scoped copy method)
+          ├──→ Wordsmithing (always)
+          └──→ Product Visual Proof (when visuals are in scope)
+```
 
 ## Required and conditional sub-skills
 
