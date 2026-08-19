@@ -283,10 +283,14 @@ h3 {
 }
 
 .map-grid {
-  min-height: 310px;
-  position: relative;
+  min-height: 330px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: 10px;
   overflow: hidden;
   margin: 15px 0;
+  padding: 16px;
   border: 1px solid #e2e6ed;
   background-image:
     linear-gradient(#dfe5ee 1px, transparent 1px),
@@ -296,16 +300,18 @@ h3 {
 
 .map-core,
 .map-node {
-  position: absolute;
+  position: static;
   border: 2px solid var(--navy);
   background: var(--white);
   box-shadow: 5px 5px 0 #d9e1ef;
 }
 
 .map-core {
-  inset: 98px 118px;
   display: grid;
+  grid-column: 2;
+  grid-row: 2;
   place-items: center;
+  padding: 8px;
   background: var(--navy);
   color: var(--white);
   text-align: center;
@@ -313,19 +319,22 @@ h3 {
 
 .map-core strong {
   font-family: var(--font-geist), sans-serif;
-  font-size: 52px;
+  font-size: 44px;
   font-weight: 800;
   line-height: 1;
   letter-spacing: -0.08em;
 }
 
 .map-core span {
-  font-size: 10px;
+  font-size: 8px;
   font-weight: 900;
   letter-spacing: 0.16em;
 }
 
 .map-node {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 10px;
   font-size: 8px;
   font-weight: 900;
@@ -341,11 +350,14 @@ h3 {
   font-weight: 800;
 }
 
-.n1 { top: 21px; left: 22px; }
-.n2 { top: 20px; right: 22px; }
-.n3 { top: 130px; left: 22px; }
-.n4 { top: 130px; right: 22px; }
-.n5 { bottom: 20px; left: 50%; transform: translateX(-50%); }
+.n1 { grid-column: 1; grid-row: 1; }
+.n2 { grid-column: 2; grid-row: 1; }
+.n3 { grid-column: 3; grid-row: 1; }
+.n4 { grid-column: 1; grid-row: 2; }
+.n5 { grid-column: 3; grid-row: 2; }
+.n6 { grid-column: 1; grid-row: 3; }
+.n7 { grid-column: 2; grid-row: 3; }
+.n8 { grid-column: 3; grid-row: 3; }
 
 .map-footer {
   color: var(--muted);
@@ -922,11 +934,9 @@ a:focus-visible {
   }
 
   .map-grid {
-    min-height: 265px;
-  }
-
-  .map-core {
-    inset: 80px 94px;
+    min-height: 300px;
+    gap: 7px;
+    padding: 10px;
   }
 
   .portal-intro {
@@ -1041,11 +1051,12 @@ a:focus-visible {
   }
 
   .map-node {
-    padding: 7px;
+    padding: 6px;
+    font-size: 7px;
   }
 
-  .map-core {
-    inset: 79px 76px;
+  .map-core strong {
+    font-size: 34px;
   }
 
   .metric-grid {

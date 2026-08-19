@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mike Filsaime Natural Writing Voice"
+  short_description: "Write in Mike Filsaime’s natural voice"
+  default_prompt: "Use $mike-filsaime-natural-writing-voice to rewrite this in Mike Filsaime’s natural voice."
