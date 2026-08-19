@@ -40,12 +40,13 @@ test("server-renders the Caveman Copy Hub", async () => {
   assert.match(html, /Showcase Website/);
   assert.match(html, /COPY-PASTE STARTER/);
   assert.match(html, /Not sure which skill to use\? Start here\./);
-  assert.match(html, /06 SKILLS/);
+  assert.match(html, /09 SKILLS/);
+  assert.match(html, /Mike Voice Pack/);
   assert.match(html, /caveman-copy-hub-social\.png/);
   assert.doesNotMatch(html, /Your site is taking shape|react-loading-skeleton/);
 });
 
-test("ships the six-skill bundle and branded share image", async () => {
+test("ships the nine-skill bundle and branded share image", async () => {
   const bundleUrl = new URL(
     "../public/downloads/caveman-copy-skill-system.zip",
     import.meta.url,
@@ -71,8 +72,15 @@ test("ships the six-skill bundle and branded share image", async () => {
     "caveman-showcase-website/",
     "product-visual-proof/",
     "wordsmithing-skill/",
+    "mike-filsaime-writing-voice/",
+    "mike-filsaime-natural-writing-voice/",
+    "mike-filsaime-direct-response-writing-voice/",
   ]) {
     assert.match(stdout, new RegExp(`^${skill}`, "m"));
   }
   assert.match(stdout, /^caveman-showcase-website\/DESIGN\.md$/m);
+  assert.match(
+    stdout,
+    /^mike-filsaime-direct-response-writing-voice\/references\/promotional-email-method\.md$/m,
+  );
 });

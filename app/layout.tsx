@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
     metadataBase: new URL(origin),
     title: "Caveman Copy Hub — Mike Filsaime",
     description:
-      "A six-skill system that turns product features into clear reasons to buy, then proves every claim with the real product.",
+      "A nine-skill system that turns product features into clear reasons to buy, proves every claim, and optionally writes in Mike Filsaime’s voice.",
     icons: {
       icon: "/favicon.svg",
       shortcut: "/favicon.svg",
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Caveman Copy Hub — Mike Filsaime",
       description:
-        "Turn product features into clear reasons to buy—and prove every claim with the real product.",
+        "Turn product features into reasons to buy, prove the claims, and write naturally or persuasively in Mike Filsaime’s voice.",
       type: "website",
       url: origin,
       images: [
@@ -60,7 +60,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Caveman Copy Hub — Mike Filsaime",
       description:
-        "Turn product features into clear reasons to buy—and prove every claim with the real product.",
+        "Turn product features into reasons to buy, prove the claims, and write naturally or persuasively in Mike Filsaime’s voice.",
       images: [socialImage],
     },
   };

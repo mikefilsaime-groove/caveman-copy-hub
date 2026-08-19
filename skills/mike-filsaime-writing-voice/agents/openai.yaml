@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mike Filsaime Writing Voice"
+  short_description: "Choose and apply Mike’s appropriate writing voice"
+  default_prompt: "Use $mike-filsaime-writing-voice to write this in the appropriate Mike Filsaime voice."

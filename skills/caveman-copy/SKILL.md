@@ -64,6 +64,18 @@ Caveman Copy
    └──→ Product Visual Proof (when visuals are in scope)
 ```
 
+## Optional Mike Filsaime voice layer
+
+When Mike asks for copy in his voice, the content will be published as Mike Filsaime, or the request explicitly invokes `mike-filsaime-writing-voice`:
+
+1. Read [the Mike Filsaime Writing Voice skill](../mike-filsaime-writing-voice/SKILL.md).
+2. Let Caveman Copy control product truth, scope, the value chain, and the selling argument.
+3. Let the voice skill route the expression into Mike's natural, direct-response, or blended voice.
+4. For promotional email, follow the voice system's email routing and the direct-response skill's promotional-email reference.
+5. Apply Wordsmithing last with the selected Mike voice locked. Tighten the copy without replacing Mike's diction, rhythm, tone, or selling judgment with a generic copywriter voice.
+
+Do not activate Mike's personal voice for other authors or brands unless the user explicitly requests it. Caveman Copy remains usable as a general-purpose framework without the Voice Pack.
+
 ## Establish product truth
 
 Before writing, identify only what the requested copy unit needs:

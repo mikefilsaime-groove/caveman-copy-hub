@@ -23,7 +23,19 @@ Make the copy feel:
 - easy to read,
 - easy to say out loud.
 
-Use Alex Hormozi-style direct-response clarity:
+## Preserve an active author voice
+
+When another skill or the user specifies an author voice, that voice governs diction, rhythm, tone, warmth, intensity, and characteristic selling judgment. Wordsmithing remains the final clarity pass, but it must strengthen the copy inside that voice rather than normalize it into a generic copywriter style.
+
+When `mike-filsaime-writing-voice` is active:
+
+- preserve the natural, direct-response, or blended mode it selected;
+- preserve Mike's one-to-one conversational rhythm and evidence-weighted confidence;
+- remove clutter without removing human texture;
+- do not add Hormozi phrasing, pressure, or cadence merely because it sounds punchy;
+- recheck the result against the relevant Mike voice profile after tightening.
+
+When no author voice is active, use Alex Hormozi-style direct-response clarity:
 
 - plain spoken language,
 - one clear idea at a time,
@@ -32,7 +44,7 @@ Use Alex Hormozi-style direct-response clarity:
 - simple words with strong rhythm,
 - 8th-to-10th-grade clarity without sounding dumbed down.
 
-Use Hormozi-style pressure where it fits:
+When no author voice is active, use Hormozi-style pressure where it fits:
 
 - sharpen the dream outcome,
 - expose the cost of delay,

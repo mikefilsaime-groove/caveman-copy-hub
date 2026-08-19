@@ -162,6 +162,30 @@ Copy to improve:
 
 Keep the same meaning. Cut filler, sharpen vague language, make the outcome concrete, improve the emotional consequence, and make every line easy to read aloud. Do not add unsupported claims or expand the requested scope. Give me the recommended rewrite first.`,
   },
+  {
+    id: "voice-pack",
+    tab: "Mike Voice Pack",
+    eyebrow: "OPTIONAL AUTHOR-VOICE LAYER / THREE SKILLS",
+    title: "Make clear copy sound unmistakably like Mike.",
+    summary:
+      "The master voice skill chooses Mike’s natural, direct-response, or blended voice by purpose. Promotional emails add the Email Clinic method for subject lines, campaign sequencing, proof, calls to action, postscripts, and truthful urgency.",
+    proofLabel: "VOICE ROUTING",
+    proofTitle: "Natural when teaching. Direct response when selling. Blended when both matter.",
+    proofBody:
+      "Caveman Copy still controls product truth and the value argument. The Voice Pack controls how Mike expresses it, and Wordsmithing tightens the result without replacing his voice.",
+    invokes:
+      "Optional beneath Caveman Copy. The master router loads Natural Voice, Direct Response Voice, or both; promotional email also loads the Email Clinic guidance.",
+    prompt: `Use Caveman Copy and $mike-filsaime-writing-voice to write this as Mike Filsaime.
+
+Deliverable: [EMAIL / HERO / FEATURE BLOCK / SALES PAGE / ARTICLE / OTHER]
+Audience: [WHO THIS IS FOR]
+Desired action or outcome: [WHAT THE READER SHOULD DO OR UNDERSTAND]
+Verified product and offer facts: [FACTS, PROOF, TERMS, AND CONSTRAINTS]
+Current copy or source material: [PASTE OR LINK]
+Preserve: [CLAIMS, DETAILS, STRUCTURE, OR LANGUAGE THAT MUST REMAIN]
+
+Use Caveman Copy to establish the clearest truthful value argument. Then let the Mike Filsaime Writing Voice skill choose the natural, direct-response, or blended mode based on the purpose. If this is promotional email, use the Email Clinic method and account for where the email sits in the campaign. Apply Wordsmithing last without erasing Mike’s voice or inventing facts.`,
+  },
 ];
 
 const overviewPrompt = `Help me choose and use the smallest Caveman skill that matches this job.
@@ -172,8 +196,9 @@ Audience: [WHO THIS IS FOR]
 Repository, docs, or current copy: [PATHS, LINKS, OR PASTED MATERIAL]
 Desired outcome: [WHAT SHOULD IMPROVE]
 Preserve: [CLAIMS, COMPONENTS, URLS, OR RULES THAT MUST NOT CHANGE]
+Author voice: [DEFAULT BRAND VOICE / MIKE FILSAIME / ANOTHER SPECIFIED VOICE]
 
-Choose the correct Caveman skill for the requested scope, explain the choice in one sentence, load its required sub-skills, and complete the work without expanding the assignment.`;
+Choose the correct Caveman skill for the requested scope, explain the choice in one sentence, load its required sub-skills, and complete the work without expanding the assignment. If the author is Mike Filsaime or I explicitly request Mike’s voice, also use the optional Mike Filsaime Voice Pack and preserve that voice through the final Wordsmithing pass.`;
 
 const installCommand =
   "unzip caveman-copy-skill-system.zip -d ~/.claude/skills/";
@@ -244,16 +269,17 @@ export default function Home() {
               Caveman Copy turns features into <em>reasons to buy.</em>
             </h1>
             <p className="hero-lede">
-              Tell it what your product does. The six-skill system forces every
+              Tell it what your product does. The nine-skill system forces every
               claim through feature, advantage, benefit, and promised land—then
-              proves the copy with visuals pulled from the real product.
+              proves the copy and can express it in Mike Filsaime’s natural or
+              direct-response voice.
             </p>
             <div className="hero-actions">
               <a className="button primary" href="#library">
                 Explore the system <span aria-hidden="true">↓</span>
               </a>
               <a className="button secondary" href="#install">
-                Install all six <span aria-hidden="true">↗</span>
+                Install all nine <span aria-hidden="true">↗</span>
               </a>
             </div>
             <ul className="proof-list">
@@ -266,7 +292,7 @@ export default function Home() {
           <div className="collection-map" aria-label="Caveman Copy skill system map">
             <div className="map-top">
               <span>CAVEMAN / SYSTEM MAP</span>
-              <b>06</b>
+              <b>09</b>
             </div>
             <div className="map-grid">
               <div className="map-core">
@@ -288,12 +314,21 @@ export default function Home() {
               <div className="map-node n5">
                 WORDSMITH <b>06</b>
               </div>
+              <div className="map-node n6">
+                VOICE ROUTER <b>07</b>
+              </div>
+              <div className="map-node n7">
+                NATURAL VOICE <b>08</b>
+              </div>
+              <div className="map-node n8">
+                DIRECT RESPONSE <b>09</b>
+              </div>
             </div>
             <div className="map-footer">
               <span>
                 <i /> WORDSMITH EVERY FINAL DRAFT
               </span>
-              <span>ONE SHARED PRODUCT TRUTH</span>
+              <span>OPTIONAL MIKE VOICE LAYER</span>
             </div>
           </div>
         </section>
@@ -303,13 +338,13 @@ export default function Home() {
             <p className="eyebrow">THE SYSTEM</p>
             <h2 id="system-heading">
               One clear message.
-              <br /> Six skills that finish the job.
+              <br /> Nine skills that finish the job.
             </h2>
           </div>
           <p>
-            Fix one block. Pitch one product. Rewrite a website. Or turn a
-            product family into a guided five-card tour. Every path follows the
-            same rule: say what it is, explain why it matters, and prove it.
+            Fix one block. Pitch one product. Rewrite a website. Turn a product
+            family into a guided tour. Or add Mike’s natural, direct-response,
+            and promotional-email voice without weakening the product truth.
           </p>
         </section>
 
@@ -358,15 +393,16 @@ export default function Home() {
                     robot. Use one skill for a section, one for a five-card
                     product pitch, one for a full website, and one for the
                     scroll-driven showcase experience. Proof and wordsmithing
-                    switch on when the work needs them.
+                    switch on when needed, while the optional Voice Pack makes
+                    Mike-authored work sound like Mike.
                   </p>
                 </div>
 
                 <div className="metric-grid">
                   <article>
-                    <strong>06</strong>
+                    <strong>09</strong>
                     <span>COORDINATED SKILLS</span>
-                    <p>Focused roles that share one product truth.</p>
+                    <p>Six core skills plus three Mike voice skills.</p>
                   </article>
                   <article className="navy-card">
                     <strong>04</strong>
@@ -404,6 +440,11 @@ export default function Home() {
                   <button onClick={() => selectSkill("visual-proof")}>
                     <span>05 / EVIDENCE</span>
                     <b>Turn real product behavior into visual proof</b>
+                    <i aria-hidden="true">→</i>
+                  </button>
+                  <button onClick={() => selectSkill("voice-pack")}>
+                    <span>07–09 / OPTIONAL VOICE PACK</span>
+                    <b>Write naturally, sell directly, and build promotional emails in Mike’s voice</b>
                     <i aria-hidden="true">→</i>
                   </button>
                 </div>
@@ -479,13 +520,13 @@ export default function Home() {
           <div className="install-intro">
             <p className="eyebrow">INSTALL THE SYSTEM</p>
             <h2 id="install-heading">
-              Six folders.
+              Nine folders.
               <br /> One clear chain of command.
             </h2>
             <p>
-              Download the bundle, place the six skill folders in your agent’s
-              skills directory, and invoke the skill that matches the size of
-              the job.
+              Download the bundle, place the nine skill folders in your agent’s
+              skills directory, and invoke the skill that matches the job. The
+              three voice folders stay optional unless Mike’s voice is requested.
             </p>
             <a
               className="button primary"
@@ -499,7 +540,7 @@ export default function Home() {
           <div className="install-card">
             <div className="install-card-top">
               <span>QUICK INSTALL / MACOS + LINUX</span>
-              <b>06 SKILLS</b>
+              <b>09 SKILLS</b>
             </div>
             <ol>
               <li>
@@ -508,7 +549,7 @@ export default function Home() {
               </li>
               <li>
                 <b>Unpack</b>
-                <span>Move all six folders into your agent’s skills directory.</span>
+                <span>Move all nine folders into your agent’s skills directory.</span>
               </li>
               <li>
                 <b>Invoke</b>
@@ -522,9 +563,9 @@ export default function Home() {
               </button>
             </div>
             <p className="install-note">
-              Your agent may use a different skill directory. Keep the six
-              folders together so the orchestrators can call their required
-              sub-skills.
+              Your agent may use a different skill directory. Keep all nine
+              folders together so the core orchestrators and optional Voice Pack
+              can resolve their supporting skills.
             </p>
           </div>
         </section>
@@ -542,7 +583,7 @@ export default function Home() {
             href="/downloads/caveman-copy-skill-system.zip"
             download
           >
-            Download all six <span aria-hidden="true">↓</span>
+            Download all nine <span aria-hidden="true">↓</span>
           </a>
         </section>
       </main>

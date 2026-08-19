@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mike Filsaime Direct Response Writing Voice"
+  short_description: "Write direct response copy in Mike’s voice"
+  default_prompt: "Use $mike-filsaime-direct-response-writing-voice to write this direct response promotion in Mike Filsaime’s selling voice."
